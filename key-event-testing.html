@@ -1,0 +1,58 @@
+<html>
+<head>
+	<title>KeyEvent testing</title>
+	<meta charset='utf-8' />
+</head>
+<body>
+	<p>keydown:<input type="text" name="inputer" id="JinputNumLimit50" class=''> <span class="tips" id="JtipNum50"></span></p>
+	<p>keydown在各个浏览器下输入中文的表现</p>
+	<ul>
+		<li>chrome：每次触发，输入中的文本长度会计入input的value</li>
+		<li>ff：仅在输入中文的第一次按下鼠标时触发事件</li>
+		<li>IE：每次触发，输入中的文本长度 不会 计入input的value</li>
+	</ul>
+	<p>keypress:<input type="text" name="inputer" id="JinputNumLimit30" class=''> <span class="tips" id="JtipNum30"></span></p>	
+	<p>keypress在各个浏览器下输入中文的表现</p>
+	<ul>
+		<li>chrome：输入中文时不触发事件</li>
+		<li>ff：输入中文时不触发事件</li>
+		<li>IE：输入中文时不触发事件</li>
+	</ul>
+	<p>keyup:<input type="text" name="inputer" id="JinputNumLimit20" class=''> <span class="tips" id="JtipNum20"></span></p>
+	<p>keydown在各个浏览器下输入中文的表现</p>
+	<ul>
+		<li>chrome：每次触发，输入中的文本长度会计入input的value</li>
+		<li>ff：每次触发，输入中的文本长度会计入input的value</li>
+		<li>IE：每次触发，输入中的文本长度 不会 计入input的value</li>
+	</ul>
+	<script type="text/javascript">		
+			(function(){
+			 	var input = document.getElementById('JinputNumLimit50'),
+					tips = document.getElementById('JtipNum50');
+					var count=0;
+					input.onkeydown=function(){
+						count++;
+						tips.innerHTML='text length='+input.value.length+'; event count='+count;
+					}
+			 })();
+			 (function(){
+			 	var input = document.getElementById('JinputNumLimit30'),
+					tips = document.getElementById('JtipNum30');
+					var count=0;
+					input.onkeypress=function(){
+						count++;
+						tips.innerHTML='text length='+input.value.length+'; event count='+count;
+					}
+			 })();
+			 (function(){
+			 	var input = document.getElementById('JinputNumLimit20'),
+					tips = document.getElementById('JtipNum20');
+					var count=0;
+					input.onkeyup=function(){
+						count++;
+						tips.innerHTML='text length='+input.value.length+'; event count='+count;
+					}
+			 })();
+	</script>
+</body>
+</html>
